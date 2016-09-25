@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.5/css/bootstrap.min.css" media="screen">
+    <link type="text/css" href="/stylesheets/nav.css" rel="stylesheet"/>
+    <link type="text/css" href="/stylesheets/info.css" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse" aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="/images/logo.png" width="100%">
+            </a>
+            <p class="navbar-text">专注每一次思考</p>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+            <div class="navbar-right">
+                <form class="navbar-form navbar-left">
+                    <input type="text" class="form-control" placeholder="在此搜索问题">
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/introduce">提出问题</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">爱问001<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">个人信息</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/logout">退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container contain">
+    <div class="row">
+        <dl id="contain-left" class="col-xs-3 col-sm-3 col-md-2 col-md-offset-1">
+            <h3>个人设置</h3>
+            <dd class="active"><a href="#Account" data-toggle="tab" class="active">账号设置</a></dd>
+        </dl>
+        <div id="contain-right" class="col-xs-9 col-sm-9 col-md-8 tab-content">
+            <div class="tab-pane fade in active" id="Account">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-11  col-md-offset-1">
+                        <div class="page-header">
+                            <h3>账号设置</h3>
+                        </div>
+                        <form class="setting">
+                            <dl class="dl-horizontal">
+                                <dt>头像</dt>
+                                <dd><img id="preview" src="/images/right-pic.png" alt=""><input type="file" name="pic" id="file_upload" accept="image/*"/></dd>
+                                <dt>用户名</dt>
+                                <dd><input type="text" value="<%- user.name %>"></dd>
+                                <dt>昵称</dt>
+                                <dd><input type="text" value="happy tree friends"  placeholder="昵称"></dd>
+                                <dt>手机</dt>
+                                <dd><input type="text" value="123456789" placeholder="手机号码"></dd>
+                                <dt>邮箱</dt>
+                                <dd><input type="email" value="123@qq.com"></dd>
+                                <dd><input type="submit" class="setting-btn" value="提交" placeholder="邮箱地址"></dd>
+                            </dl>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdn.staticfile.org/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/javascripts/infoView.js"></script>
+</body>
+</html>

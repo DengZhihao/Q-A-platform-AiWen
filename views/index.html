@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>首页</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      font-weight:lighter ;
+      font-family: "等线 Light";
+      color: white;
+    }
+
+    img {
+      position: absolute;
+      left: 50%;
+      top: 30%;
+      transform: translate(-50%, -50%);
+    }
+    p{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    a{
+      text-decoration: none;
+    }
+    span{
+      position: absolute;
+      left: 50%;
+      top: 90%;
+      transform: translate(-50%, -50%);
+    }
+@media only screen and (max-device-width:420px){
+* {
+     font-size:1.2em;
+}
+}
+  </style>
+</head>
+<body>
+<img src="/images/logo.png">
+<p><a href="/login">登录</a>&emsp;<a href="/register">注册</a></p>
+<span>专注每一次思考</span>
+<canvas id="canvas" width="1600px" height="800px" style="background:#000;"></canvas>
+<script>
+  window.onload = function () {
+    var canvas = document.querySelector('#canvas'),
+            context = canvas.getContext('2d'),
+            mouse = utils.captureMouse(canvas),
+            balls = [],
+            numBalls = 250,
+            fl = 250,
+            vpX = canvas.width / 2,
+            vpY = canvas.height / 2,
+            angleX,
+            angleY; //绕Y轴旋转的角度
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    for (var i = 0; i < numBalls; i++) {
+      var size = Math.random() * 10 + 5,
+              ball = new Ball3d(size);
+
+      ball.xpos = Math.random() * 500 - 250;
+      ball.ypos = Math.random() * 500 - 250;
+      ball.zpos = Math.random() * 500 - 250;
+
+      balls.push(ball);
+
+    }
+
+    function rotateY(ball, angle) {
+      var cos = Math.cos(angle),
+              sin = Math.sin(angle),
+              x1 = ball.xpos * cos - ball.zpos * sin,
+              z1 = ball.zpos * cos + ball.xpos * sin;
+
+      ball.xpos = x1;
+      ball.zpos = z1;
+
+    }
+
+    function rotateX(ball, angle) {
+      var cos = Math.cos(angle),
+              sin = Math.sin(angle),
+              y1 = ball.ypos * cos - ball.zpos * sin,
+              z1 = ball.zpos * cos + ball.ypos * sin;
+
+      ball.ypos = y1;
+      ball.zpos = z1;
+    }
+
+    function setPerspective(ball) {
+      if (ball.zpos > -fl) {
+        var scale = fl / (fl + ball.zpos);
+        ball.scaleX = ball.scaleY = scale;
+        ball.x = vpX + ball.xpos * scale;
+        ball.y = vpY + ball.ypos * scale;
+        ball.visible = true;
+      } else {
+        ball.visible = false;
+      }
+    }
+
+    function move(ball) {
+      rotateY(ball, angleY);
+      rotateX(ball, angleX);
+      setPerspective(ball)
+    }
+
+    function zSort(a, b) {
+      return (b.zpos - a.zpos);
+    }
+
+    function draw(ball) {
+      if (ball.visible) {
+        ball.draw(context);
+      }
+    }
+
+
+    (function deawFrame() {
+      window.requestAnimationFrame(deawFrame, canvas);
+      context.clearRect(0, 0, canvas.width, canvas.height);
+
+
+      angleX = (mouse.y - vpY) * 0.0001;
+      angleY = (mouse.x - vpX) * 0.0001;
+
+      balls.forEach(move);
+      balls.sort(zSort);
+      balls.forEach(draw);
+    }())
+
+  }
+</script>
+<script>//旋转角度函数 mx = mouse.x | my = mouse.y | ox = object.x | oy = object.y
+function RotationToMouse(mx, my, ox, oy) {
+  var dx = mx - ox;
+  var dy = my - oy;
+  var angle = Math.atan2(dy, dx);
+  return angle;
+}
+
+window.utils = {};
+//捕获坐标
+window.utils.captureMouse = function (element) {
+  var mouse = {x: 0, y: 0};
+  element.addEventListener('mousemove', function (event) {
+    var x, y;
+    if (event.pageX || event.pageY) {
+      x = event.pageX;
+      y = event.pageY;
+    } else {
+      x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+      y = event.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+    }
+
+    x -= element.offsetLeft;
+    y -= element.offsetTop;
+
+    mouse.x = x;
+    mouse.y = y;
+  }, false);
+
+  return mouse;
+}
+
+//获取触摸事件坐标
+window.utils.captureTouch = function (element) {
+  var touch = {x: null, y: null, isPressed: false, event: null},
+          body_scrollLeft = document.body.scrollLeft,
+          element_scrollLeft = document.documentElement.scrollLeft,
+          body_scrollTop = document.body.scrollTop,
+          element_scrollTop = document.documentElement.scrollTop,
+          offsetLeft = element.offsetLeft,
+          offsetTop = element.offsetTop;
+
+  element.addEventListener('touchstart', function (event) {
+    touch.isPressed = true;
+    touch.event = event;
+  }, false);
+
+  element.addEventListener('touchend', function (event) {
+    touch.isPressed = false;
+    touch.x = null;
+    touch.y = null;
+    touch.event = event;
+  }, false);
+
+  element.addEventListener('touchmove', function (event) {
+    var x, y,
+            touch_event = event.touches[0]; //first touch
+
+    if (touch_event.pageX || touch_event.pageY) {
+      x = touch_event.pageX;
+      y = touch_event.pageY;
+    } else {
+      x = touch_event.clientX + body_scrollLeft + element_scrollLeft;
+      y = touch_event.clientY + body_scrollTop + element_scrollTop;
+    }
+    x -= offsetLeft;
+    y -= offsetTop;
+
+    touch.x = x;
+    touch.y = y;
+    touch.event = event;
+  }, false);
+
+  return touch;
+};
+
+window.utils.parseColor = function (color, toNumber) {
+  if (toNumber === true) {
+    if (typeof color === 'number') {
+      return (color | 0); //chop off decimal
+    }
+    if (typeof color === 'string' && color[0] === '#') {
+      color = color.slice(1);
+    }
+    return window.parseInt(color, 16);
+  } else {
+    if (typeof color === 'number') {
+      color = '#' + ('00000' + (color | 0).toString(16)).substr(-6); //pad
+    }
+    return color;
+  }
+};
+
+//将16进制颜色转换成rgb
+window.utils.colorToRGB = function (color, alpha) {
+  //如果是字符串格式，转换为数字
+  if (typeof color === "string" && color[0] === "#") {
+
+    //parseInt(('#ffffff').slice(1),16) 为 16777215
+    color = window.parseInt(color.slice(1), 16);
+
+  }
+  alpha = (alpha === undefined) ? 1 : alpha;
+
+  //将color转换成r,g,b值，>>右移  <<左移
+  var r = color >> 16 & 0xff; //例如：16777215 >> 16 变成 255， 255 & 0xff为255
+  var g = color >> 8 & 0xff;
+  var b = color & 0xff;
+  a = (alpha < 0) ? 0 : ((alpha > 1) ? 1 : alpha);
+
+  if (a === 1) {
+    return "rgb(" + r + "," + g + "," + b + ")";
+  } else {
+    return "rgb(" + r + "," + g + "," + b + "," + a + ")";
+  }
+};
+
+window.utils.containsPoint = function (rect, x, y) {
+  return !(x < rect.x || x > rect.x + rect.width ||
+  y < rect.y || y > rect.y + rect.height);
+}
+
+window.utils.intersects = function (rectA, rectB) {
+  return !(rectA.x + rectA.width < rectB.x ||
+  rectB.x + rectB.width < rectA.x ||
+  rectA.y + rectA.height < rectB.y ||
+  rectB.y + rectB.height < rectA.y);
+}
+</script>
+<script>
+  function Ball3d(radius) {
+    if (radius === undefined) {
+      radius = 40;
+    }
+    this.x = 0;
+    this.y = 0;
+    this.xpos = 0;
+    this.ypos = 0;
+    this.zpos = 0;
+    this.vz = 0;
+    this.vx = 0;
+    this.vy = 0;
+    this.radius = radius;
+    this.rotation = 0;
+    this.mass = 1;
+    this.scaleX = 1;
+    this.scaleY = 1;
+    this.name = "";
+    this.lineWidth = 1;
+
+  }
+
+  Ball3d.prototype.draw = function (context) {
+    context.save();
+    context.translate(this.x, this.y);
+    context.rotate(this.rotation);
+    context.scale(this.scaleX, this.scaleY);
+    context.lineWidth = this.lineWidth;
+    var gradient = context.createRadialGradient(0, 0, 0, 0, 0, this.radius);
+    gradient.addColorStop(0, "rgba(255,255,255,1)");
+    gradient.addColorStop(0.2, "rgba(0,255,255,1)");
+    gradient.addColorStop(0.3, "rgba(0,0,100,1)");
+    gradient.addColorStop(1, "rgba(0,0,0,0.1)");
+    context.fillStyle = gradient;
+    context.beginPath();
+    context.arc(0, 0, this.radius, 0, Math.PI * 2, false);
+    context.closePath();
+    context.fill();
+    context.restore();
+  }</script>
+
+</body>
+</html>
