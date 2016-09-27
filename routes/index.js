@@ -63,6 +63,16 @@ router.route("/register").get(function(req,res){
 	});
 });
 
+/* GET main page. */
+router.get("/main",function(req,res){
+        if(!req.session.user){
+                req.session.error = "请佅~H潙»弾U"
+                res.redirect("/login");
+        }
+        res.render("main",{title:'Main'});
+});
+
+
 /* GET home page. */
 router.get("/home",function(req,res){ 
 	if(!req.session.user){ 					

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>问题页</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.5/css/bootstrap.min.css"
+          media="screen">
+    <link type="text/css" href="/stylesheets/nav.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/stylesheets/main.css"/>
+</head>
+<body>
+
+<nav class="navbar navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-navbar-collapse" aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/main">
+                <img alt="Brand" src="/images/logo.png" width="100%">
+            </a>
+            <p class="navbar-text">专注每一次思考</p>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+            <div class="navbar-right">
+                <form class="navbar-form navbar-left">
+                    <input type="text" class="form-control" placeholder="在此搜索问题">
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/introduce">提出问题</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">爱问001<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/home">个人信息</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/logout">退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="col-sm-8 col-md-7 col-md-offset-1 content">
+        <ul class="nav nav-pills" role="tablist">
+            <li role="presentation" class="active"><a href="#all" data-toggle="tab">全部问题</a></li>
+            <li role="presentation"><a href="#hot" data-toggle="tab">热门问题</a></li>
+            <li role="presentation"><a href="#wait" data-toggle="tab">等待解决</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="all" class="tab-pane fade in active">
+                <div class="media tab-item">
+                    <div class="media-left">
+                        <div class="tab-answer"><span>3</span>回答</div>
+                    </div>
+                    <a class="media-body tab-text">
+                        <h5>请问各位在js中如何给整个屏幕设置onclick事件?</h5>
+                        <sapn>请问各位同学，在js中如何给真个屏幕设置onclick，即我点击屏幕上任何一个地方都会执行onclick事件</sapn>
+                    </a>
+                    <span class="tab-user">爱问用户001</span><span class="table-day">3天前提问</span>
+                </div>
+            </div>
+            <div id="hot" class="tab-pane fade">
+                <div class="media tab-item">
+                    <div class="media-left">
+                        <div class="tab-answer"><span>3</span>回答</div>
+                    </div>
+                    <a class="media-body tab-text">
+                        <h5>Angular2 的浏览器兼容性如何？开发语言是选择 js 还是 ts 呢？</h5>
+                        <span>必须ts...现在官方文档，例子大多都是ts版本的，选择ts也方便学习，另外ts 引入类型概念也是开发的优势</span>
+                    </a>
+                    <span class="tab-user">爱问用户001</span><span class="table-day">3天前提问</span>
+                </div>
+            </div>
+            <div id="wait" class="tab-pane fade">
+                <div class="media tab-item">
+                    <div class="media-left">
+                        <div class="tab-answer"><span>3</span>回答</div>
+                    </div>
+                    <a class="media-body tab-text">
+                        <h5>下面这种在react-native中的写法是属于什么语法规则？?</h5>
+                        <span>下面这种在react-native中的写法是属于什么语法规则？</span>
+                    </a>
+                    <span class="tab-user">爱问用户001</span><span class="table-day">3天前提问</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 col-md-3 hidden-xs user">
+        <div class="row user-info">
+            <div class="col-sm-5 user-img">
+                <img src="/images/right-pic.png">
+            </div>
+            <div class="col-sm-7">
+                <div class="user-answer"><span>0</span>回答</div>
+                <div class="user-best"><span>0</span>最佳</div>
+            </div>
+        </div>
+        <div class="row user-setting">
+            <a href="/home">进入个人设置</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdn.staticfile.org/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
+

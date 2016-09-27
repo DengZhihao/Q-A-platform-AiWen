@@ -15,7 +15,7 @@ $(function(){
             data: data,
             success: function(data,status){
                 if(status == 'success'){
-                    location.href = 'home';
+                    location.href = 'main';
                 }
             },
             error: function(data,status){

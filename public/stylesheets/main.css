@@ -1,0 +1,103 @@
+.content {
+    margin-top: 90px;
+}
+
+.content .nav-pills li {
+    width: 33%;
+    margin: 0;
+    text-align: center;
+    background: none;
+}
+
+.content .nav-pills li a {
+    color: black;
+    background: none;
+}
+
+.content .nav-pills li a:hover {
+    background: none;
+    color: black;
+}
+
+.content .nav-pills .active a {
+    background: none;
+    border-bottom: #31B0D5 solid 3px;
+}
+
+.content .nav-pills li a:hover {
+    background: none;
+}
+.content .nav-pills li a:focus {
+    color: black;
+    background: none;
+}
+.content .tab-item{
+    margin-top: 15px;
+    background: #f8f8f8;
+}
+.content .tab-item .tab-answer{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin: 10px 0 10px 20px;
+    background: #31B0D5;
+    color: #fff;
+    text-align: center;
+}
+.content .tab-item .tab-answer span{
+    display: block;
+    margin: 10px 0 0 0;
+    text-align: center;
+}
+.content .tab-item .tab-text{
+    color: #333;
+    text-decoration: none;
+    vertical-align: top;
+}
+.content .tab-item .tab-text h5{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.content .tab-item .tab-user{
+    margin-left: 90px;
+    color: #aaa;
+}
+.content .tab-item .table-day{
+    margin-left: 20px;
+    color: #aaa;
+}
+.user{
+    margin-top: 90px;
+}
+.user .user-info{
+    background: #f8f8f8;
+}
+.user .user-info .user-img{
+    text-align: center;
+}
+.user .user-info .user-answer{
+    display: inline-block;
+    width: 48%;
+    text-align: center;
+    padding: 28px 0;
+}
+.user .user-info .user-best{
+    display: inline-block;
+    width: 48%;
+    margin-top: 28px;
+    border-left: 1px solid #eee;
+    text-align: center;
+}
+.user .user-info span{
+    display: block;
+}
+.user .user-setting{
+    padding: 6px 15px;
+    border-top: 1px solid #eee;
+    background: #f8f8f8;
+    text-align: right;
+}
+.user .user-setting a{
+    color: #31B0D5;
+    text-decoration: none;
+}
