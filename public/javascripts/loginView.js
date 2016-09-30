@@ -1,6 +1,3 @@
-/**
- * Created by DengZhihao on 2016/9/21.
- */
 $(function(){
     $("#register0").click(function(){
         location.href = 'register';

@@ -38,6 +38,7 @@ router.route("/register").get(function(req,res){
 	var User = global.dbHandel.getModel('user');
 	var uname = req.body.uname;
 	var upwd = req.body.upwd;
+        var usex = req.body.usex;
 	User.findOne({name: uname},function(err,doc){   
 		if(err){ 
 			res.send(500);
@@ -49,7 +50,8 @@ router.route("/register").get(function(req,res){
 		}else{ 
 			User.create({ 							
 				name: uname,
-				password: upwd
+				password: upwd,
+				sex:usex
 			},function(err,doc){ 
 				 if (err) {
                         res.send(500);

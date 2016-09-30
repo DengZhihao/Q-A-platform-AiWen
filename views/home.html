@@ -31,7 +31,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/introduce">提出问题</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">爱问001<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">用户:<%- user.name -%><span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">个人信息</a></li>
                             <li role="separator" class="divider"></li>
@@ -63,8 +63,8 @@
                                 <dd><img id="preview" src="/images/right-pic.png" alt=""><input type="file" name="pic" id="file_upload" accept="image/*"/></dd>
                                 <dt>用户名</dt>
                                 <dd><input type="text" value="<%- user.name %>"></dd>
-                                <dt>昵称</dt>
-                                <dd><input type="text" value="happy tree friends"  placeholder="昵称"></dd>
+                                <dt>性别</dt>
+                                <dd><input type="text" value="<%- user.sex %>"></dd>
                                 <dt>手机</dt>
                                 <dd><input type="text" value="123456789" placeholder="手机号码"></dd>
                                 <dt>邮箱</dt>
