@@ -76,12 +76,26 @@ router.get("/main",function(req,res){
 
 
 /* GET home page. */
-router.get("/home",function(req,res){ 
+router.route("/home").get(function(req,res){ 
 	if(!req.session.user){ 					
 		req.session.error = "请先登录"
 		res.redirect("/login");				
 	}
 	res.render("home",{title:'Home'});       
+}).post(function(req,res){
+        var User = global.dbHandel.getModel('user');
+        var uname = req.body.uname;
+        User.findOne({name: uname},function(err,user){
+                if(err){
+                        res.send(500);
+                        req.session.error =  '缾Q纾\廾B常轔~Y误﻾A';
+                        console.log(err);
+                   }else{
+                        user.remove(function(err){
+                                 });
+                }
+        });
+        res.redirect("/login");
 });
 
 /* GET introduce page. */
