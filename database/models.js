@@ -6,6 +6,8 @@ module.exports = {
 	},
         question:{
                 title:{type:String,required:true},
-                content:{type:String,required:true}
+                content:{type:String,required:true},
+             	time:{type:String,required:true},
+		name:{type:String,required:true}
         }
 };
