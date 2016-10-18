@@ -95,6 +95,8 @@ router.route("/home").get(function(req,res){
                                  });
                 }
         });
+        req.session.user = null;
+        req.session.error = null;
         res.redirect("/login");
 });
 

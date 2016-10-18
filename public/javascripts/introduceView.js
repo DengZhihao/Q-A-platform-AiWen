@@ -2,8 +2,7 @@ $(function(){
         $("#editor-post").click(function(){ 
             var title = $("#editor-title").val();
             var content=$(".simditor-body p").text();
-            var time = 
-new Date().toLocaleString();
+            var time = new Date().toLocaleString();
             var data = {"qtitle":title,"qcontent":content,"qtime":time};
             $.ajax({ 
                 url: '/introduce',
