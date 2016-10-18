@@ -99,12 +99,43 @@ router.route("/home").get(function(req,res){
 });
 
 /* GET introduce page. */
-router.get("/introduce",function(req,res){
+router.route("/introduce").get(function(req,res){
         if(!req.session.user){
                 req.session.error = "�先登录"
                 res.redirect("/login");
         }
         res.render("introduce",{title:'Introduce question'});
+}).post(function(req,res){ 
+	var Question = global.dbHandel.getModel('question');
+	var qtitle = req.body.qtitle;
+	var qcontent = req.body.qcontent;
+        var qtime = req.body.qtime;
+	var qname = req.session.user.name;
+	User.findOne({title: qtitle},function(err,doc){   
+		if(err){ 
+			res.send(500);
+			req.session.error =  '提问失败';
+			console.log(err);
+		}else if(doc){ 
+			req.session.error = '问题已存在，请去该问题讨论';
+			res.send(500);
+		}else{ 
+			Question.create({ 							
+				title: qtitle,
+				content: qcontent,
+				time: qtime,
+				name:qname
+			},function(err,doc){ 
+				 if (err) {
+                        res.send(500);
+                        console.log(err);
+                    } else {
+                        req.session.error = 'ç”¨æˆ·ååˆ›å»ºæˆåŠŸï¼';
+                        res.send(200);
+                    }
+                  });
+		}
+	});
 });
 
 /* GET logout page. */
