@@ -1,0 +1,114 @@
+.header {
+    margin-top: 50px;
+    padding-bottom: 20px;
+    background-color: #f3f3f3;
+}
+.header p{
+    margin: 24px 0;
+}
+.question-tab{
+    padding: 5px;
+    border-radius: 2px;
+    font-size: 13px;
+    background-color: #31B0D5;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+}
+.question-tab:hover{
+    color: #fff;
+    text-decoration: none;
+}
+.question-user{
+    margin-left: 16px;
+    color: #31B0D5;
+    text-decoration: none;
+}
+.question-time{
+    margin-left: 10px;
+    color: #999;
+}
+
+.content .context-main section{
+    padding: 12px 0;
+    border-bottom: solid 1px #ccc;
+    overflow: hidden;
+}
+.content .context-main .content-user{
+    float: right;
+}
+.content .context-main .context-comment{
+    float: right;
+    margin-right: 15px;
+    color: #999;
+    cursor: pointer;
+}
+
+.content .reply{
+    padding: 15px 0;
+}
+.content .reply textarea {
+    display: block;
+    width: 100%;
+    height: 180px;
+    margin-top: 20px;
+    padding: 12px 16px;
+    border: 1px solid #c9d8db;
+    border-radius: 3px;
+    outline: none;
+    resize: vertical;
+}
+.content .reply .reply-btn {
+    float: right;
+    width: 120px;
+    height: 38px;
+    margin: 20px auto;
+    border: 0 solid;
+    border-radius: 3px;
+    background-color: #31B0D5;
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.user{
+    margin-top: 20px;
+}
+.user .user-info{
+    background: #f8f8f8;
+}
+.user .user-info .user-img{
+    text-align: center;
+}
+.user .user-info .user-answer{
+    display: inline-block;
+    width: 48%;
+    text-align: center;
+    padding: 28px 0;
+}
+.user .user-info .user-best{
+    display: inline-block;
+    width: 48%;
+    margin-top: 28px;
+    border-left: 1px solid #eee;
+    text-align: center;
+}
+.user .user-info span{
+    display: block;
+}
+.user .user-setting{
+    padding: 6px 15px;
+    border-top: 1px solid #eee;
+    background: #f8f8f8;
+    text-align: right;
+}
+.user .user-setting a{
+    color: #31B0D5;
+    text-decoration: none;
+}
+
+.user-like{
+    margin-top: 24px;
+    background: #f8f8f8;
+}
+.user .user-like a{
+    color: #31B0D5;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <title>问题详情</title>
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/nav.css">
+    <link rel="stylesheet" href="/stylesheets/detail.css">
+</head>
+<body>
+<nav class="navbar navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse" aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/main">
+                <img alt="Brand" src="/images/logo.png" width="100%">
+            </a>
+            <p class="navbar-text">专注每一次思考</p>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+            <div class="navbar-right">
+                <form class="navbar-form navbar-left">
+                    <input type="text" class="form-control" placeholder="在此搜索问题">
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/introduce">提出问题</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">爱问001<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/home">个人信息</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/logout">退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h3>请问各位在js中如何给整个屏幕设置onclick事件?</h3>
+                <p>请问各位同学，在js中如何给整个屏幕设置onclick，即我点击屏幕上任何一个地方都会执行onclick事件？</p>
+                <a href="" class="question-tab">javascript</a>
+                <span class="question-user">爱问用户001</span>
+                <span class="question-time">2天前提问</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-md-7 col-md-offset-1 content">
+            <h4 class="content-number">2个回答</h4>
+            <div class="context-main">
+                <section>
+                    <p>使用jquery的话，</p>
+                    <pre>$('body').click(function(){
+                    //do somthing..
+                    });</pre>
+                    <span class="question-user">用户b</span><span class="question-time">1小时前回答</span><span class="context-comment">评论</span>
+                </section>
+                <section>
+                    <p>监听事件直接绑在document上</p>
+                    <pre>document.addEventListener('click', function(){
+                    alert('html on click');
+                    });</pre>
+                    <p>如果绑在body上的话，给body加点限制，不然body不一定会充满整个窗口的。</p>
+                    <pre>body{ margin:0; min-width:100vw; min-height:100vh;}</pre>
+                    <span class="question-user">用户A</span><span class="question-time">2分钟前回答</span><span class="context-comment">评论</span>
+                </section>
+            </div>
+            <form class="reply">
+                <h4>我的答案</h4>
+                <textarea placeholder="请输入要回复的内容"></textarea>
+                <input type="submit" class="reply-btn" value="回帖">
+            </form>
+        </div>
+        <div class="col-sm-4 col-md-3 hidden-xs user">
+            <div class="row user-info">
+                <div class="col-sm-5 user-img">
+                    <img src="/images/right-pic.png">
+                </div>
+                <div class="col-sm-7">
+                    <div class="user-answer"><span>0</span>回答</div>
+                    <div class="user-best"><span>0</span>最佳</div>
+                </div>
+            </div>
+            <div class="row user-setting">
+                <a href="/home">进入个人设置</a>
+            </div>
+            <div class="row user-like">
+                <h5>相似问题</h5>
+                <a href="detail.html">在javascript或者jQuery中绑定按钮点击事件，和在HTML 标签中直接调用onclick属性有什么区别？</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script  type="text/javascript" src="http://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
+<script  type="text/javascript" src="http://cdn.staticfile.org/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
+
