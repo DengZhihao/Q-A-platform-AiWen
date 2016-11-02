@@ -140,6 +140,15 @@ router.route("/introduce").get(function(req,res){
 	});
 });
 
+/* GET detail page. */
+router.get("/detail",function(req,res){
+        if(!req.session.user){
+                req.session.error = "è¯·ä½…~Hæ½™Â»å¼¾U"
+                res.redirect("/login");
+        }
+        res.render("detail",{title:''});
+});
+
 /* GET logout page. */
 router.get("/logout",function(req,res){   
 	req.session.user = null;
