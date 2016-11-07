@@ -18,7 +18,9 @@
     "serve-favicon": "~2.3.0"
   },
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
   "author": "dengzhihao",
   "license": "MIT",
   "description": ""
