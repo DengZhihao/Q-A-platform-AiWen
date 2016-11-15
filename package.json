@@ -12,6 +12,7 @@
     "ejs": "~2.4.1",
     "express": "~4.13.4",
     "express-session": "^1.9.1",
+    "gulp-uglify": "^2.0.0",
     "mongoose": "^4.6.0",
     "morgan": "~1.7.0",
     "multer": "^0.1.8",
@@ -19,7 +20,8 @@
   },
   "main": "app.js",
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-minify-css": "^1.2.4"
   },
   "author": "dengzhihao",
   "license": "MIT",
